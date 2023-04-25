@@ -34,6 +34,9 @@ group :development, :test do
   gem "pry-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails'
+  gem 'factory_bot'
+  gem 'database_cleaner'
 end
 
 group :development do
