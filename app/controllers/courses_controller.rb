@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
       tutor_params = course_params[:tutor_details]
       new_tutor = []
       tutor_params.each do |t|
-        new_tutor << Tutor.new(
+        new_tutor << Tutor.create(
           tutor_name: t[:tutor_name],
           expertise: t[:expertise],
           degree: t[:degree],
@@ -32,6 +32,6 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course)
           .permit(:course_name, :skill, :fee,
-                  tutor_details: [])
+                  tutor_details: [:tutor_name, :expertise, :degree, :yoe])
   end
 end
