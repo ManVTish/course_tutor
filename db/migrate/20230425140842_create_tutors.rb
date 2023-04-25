@@ -10,6 +10,6 @@ class CreateTutors < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_foreign_key :tutors, :course, column: :course_id
+    add_foreign_key :tutors, :courses, column: :course_id
   end
 end
