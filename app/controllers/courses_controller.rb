@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @course_tutor = Tutor.all.includes(:course)
+    @course = Course.all.each
   end
 
   def create
