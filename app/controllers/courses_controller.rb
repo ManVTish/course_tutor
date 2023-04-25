@@ -1,10 +1,27 @@
 class CoursesController < ApplicationController
   def create
     new_course = Course.new(
-      course_params
+      course_name: course_params[:course_name],
+      skill: course_params[:skill],
+      fee: course_params[:fee]
     )
     if new_course.save
-      render json: {res: new_course, msg: "Course created successful"}
+      tutor_params = course_params[:tutor_details]
+      new_tutor = []
+      tutor_params.each do |t|
+        new_tutor << Tutor.new(
+          tutor_name: t[:tutor_name],
+          expertise: t[:expertise],
+          degree: t[:degree],
+          yoe: t[:yoe],
+          course_id: new_course.id
+        )
+      end
+      res = {
+        course: new_course,
+        tutor: new_tutor
+      }
+      render json: {res: res, msg: "Course created successful"}
     else
       render json: {msg: "#{new_course.errors.full_messages}"}
     end
@@ -13,8 +30,8 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:courses)
+    params.require(:course)
           .permit(:course_name, :skill, :fee,
-                  tutorial_details: [])
+                  tutor_details: [])
   end
 end
