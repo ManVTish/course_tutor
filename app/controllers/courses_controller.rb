@@ -9,9 +9,9 @@ class CoursesController < ApplicationController
     )
     if new_course.save
       build_tutor_details(new_course.id)
-      render json: {msg: "Course created successful"}
+      render json: {success: true, msg: "Course created successful"}
     else
-      render json: {msg: "#{new_course.errors.full_messages}"}
+      render json: {success: false, msg: "#{new_course.errors.full_messages}"}
     end
   end
 
@@ -34,7 +34,7 @@ class CoursesController < ApplicationController
   def build_tutor_details(course_id)
     tutor_params = course_tutor_params[:tutor_details]
     tutor_params.each do |t|
-      Tutor.create(
+      Tutor.create!(
         tutor_name: t[:tutor_name],
         expertise: t[:expertise],
         degree: t[:degree],
