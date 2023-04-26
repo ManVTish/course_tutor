@@ -5,7 +5,7 @@ Note: Endpoints were tested using Postman
 1) POST /courses (create)
 
 Request:
-{
+`{
     "course": {
         "course_name": "CS",
         "skill": "programming",
@@ -25,12 +25,12 @@ Request:
             }
         ]
     }
-}
+}`
 
 2) GET /courses (index)
 
 Response (for above request):
-[
+`[
     {
         "id": 1,
         "name": "CS",
@@ -54,4 +54,4 @@ Response (for above request):
             }
         ]
     }
-]
+]`
