@@ -1,24 +1,57 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Note: Endpoints were tested using Postman
 
-Things you may want to cover:
+1) POST /courses (create)
 
-* Ruby version
+Request:
+{
+    "course": {
+        "course_name": "CS",
+        "skill": "programming",
+        "fee": 150,
+        "tutor_details": [
+            {
+                "tutor_name": "HKS",
+                "expertise": "Electrical",
+                "degree": "Bachelor",
+                "yoe": 5
+            },
+            {
+                "tutor_name": "GR",
+                "expertise": "Web App",
+                "degree": "Masters",
+                "yoe": 10
+            }
+        ]
+    }
+}
 
-* System dependencies
+2) GET /courses (index)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Response (for above request):
+[
+    {
+        "id": 1,
+        "name": "CS",
+        "skill": "programming",
+        "fees_in_USD": "150",
+        "created_at": "2023-04-26T09:16:22.139Z",
+        "course_tutors": [
+            {
+                "id": 1,
+                "name": "HKS",
+                "expertise": "Electrical",
+                "qualification": "Bachelor",
+                "work_exp_in_years": 5
+            },
+            {
+                "id": 2,
+                "name": "GR",
+                "expertise": "Web App",
+                "qualification": "Masters",
+                "work_exp_in_years": 10
+            }
+        ]
+    }
+]
